@@ -21,10 +21,10 @@ function Player (id, points = 0) {
 let players = [], playerCount = 0;
 
 // Set static file serving
-app.use('/assets', express.static(path.join(__dirname, './assets')));
+app.use('/assets', express.static(path.join(__dirname, '../../assets')));
 
 app.get('/', function (req, res) {
-	res.sendFile(__dirname + '/index.html');
+	res.sendFile(path.join(__dirname, '../../index.html'));
 });
 
 io.on('connection', function (socket) {
@@ -48,7 +48,7 @@ io.on('connection', function (socket) {
 			console.log('Room full');
 		}
 
-		console.log(players);
+		console.log(JSON.stringify(players, null, 2));
 	});
 
 	socket.on('playerDisconnect', function (data) {

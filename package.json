@@ -2,20 +2,20 @@
   "name": "pong",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bin/dev",
   "scripts": {
     "start": "nodemon bin/dev",
     "clean": "rm -rf ./server/dist",
     "build": "npm install && npm run clean && mkdir ./server/dist && babel ./server/src -s -d ./server/dist",
     "local-prod": "npm run build && node bin/prod",
-    "prod": "pm2 start bin/prod --name pong@casperengelmann.com",
-    "restart-prod": "pm2 restart pong@casperengelmann.com",
-    "update": "sudo git reset --hard HEAD && sudo git pull && sudo npm run build && sudo pm2 restart 1"
+    "prod": "npm run build && pm2 start bin/prod --name pong@casperengelmann.com:7777",
+    "restart-prod": "npm run build && pm2 restart pong@casperengelmann.com:7777",
+    "update": "sudo git reset --hard HEAD && sudo git pull && sudo npm run build && sudo pm2 restart pong@casperengelmann.com:7777"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.26.0",
+    "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
